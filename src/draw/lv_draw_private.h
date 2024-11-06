@@ -30,6 +30,7 @@ extern "C" {
 
 struct _lv_draw_task_t {
     lv_draw_task_t * next;
+    uint64_t _mem_leak_test;
 
     lv_draw_task_type_t type;
 
@@ -52,10 +53,16 @@ struct _lv_draw_task_t {
      * Therefore during drawing the layer's clip area shouldn't be used as it might be already changed for other draw tasks.
      */
     lv_area_t clip_area;
+    lv_layer_t * target_layer;
 
 #if LV_DRAW_TRANSFORM_USE_MATRIX
     /** Transform matrix to be applied when rendering the layer */
     lv_matrix_t matrix;
+#endif
+
+#if LV_USE_PARALLEL_DRAW_DEBUG
+    /* Reference to the draw unit for debug purposes */
+    lv_draw_unit_t * draw_unit;
 #endif
 
     volatile int state;              /** int instead of lv_draw_task_state_t to be sure its atomic */
@@ -83,13 +90,6 @@ struct _lv_draw_mask_t {
 
 struct _lv_draw_unit_t {
     lv_draw_unit_t * next;
-
-    /**
-     * The target_layer on which drawing should happen
-     */
-    lv_layer_t * target_layer;
-
-    const lv_area_t * clip_area;
 
     /**
      * Name and ID of the draw unit, for debugging purposes only.
