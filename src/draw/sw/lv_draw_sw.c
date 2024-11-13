@@ -217,6 +217,30 @@ static int32_t lv_draw_sw_delete(lv_draw_unit_t * draw_unit)
 #endif
 }
 
+void lv_draw_sw_i1_to_argb8888(const void * buf_i1, void * buf_argb8888, uint32_t buf_size_px)
+{
+    /*Extract the bits of I1 px_map and convert them to ARGB8888*/
+    const uint8_t * src = buf_i1;
+    uint32_t * dst = buf_argb8888;
+    /*Skip the palette*/
+    src += LV_COLOR_INDEXED_PALETTE_SIZE(LV_COLOR_FORMAT_I1) * 4;
+    uint32_t i1_byte_count = buf_size_px / 8;
+    for(uint32_t i = 0; i < i1_byte_count; i++) {
+        /*From MSB to LSB (pixel 0 to pixel 7 in a byte)*/
+        for(int32_t bit = 7; bit >= 0; bit--) {
+            /*White*/
+            if((src[i] >> bit) & 1) {
+                *dst = 0xFFFFFFFFu;
+            }
+            /*Black*/
+            else {
+                *dst = 0xFF000000u;
+            }
+            dst++;
+        }
+    }
+}
+
 void lv_draw_sw_rgb565_swap(void * buf, uint32_t buf_size_px)
 {
     if(LV_DRAW_SW_RGB565_SWAP(buf, buf_size_px) == LV_RESULT_OK) return;

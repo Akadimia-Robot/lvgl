@@ -153,6 +153,14 @@ void lv_draw_sw_vector(lv_draw_unit_t * draw_unit, const lv_draw_vector_task_dsc
 #endif
 
 /**
+ * Converts an I1 buffer to ARGB8888 format.
+ * @param buf_i1        pointer to buffer with I1 formatted render
+ * @param buf_argb8888  pointer to buffer for ARGB8888 render
+ * @param buf_size_px   number of pixels in the buffer
+ */
+void lv_draw_sw_i1_to_argb8888(const void * buf_i1, void * buf_argb8888, uint32_t buf_size_px);
+
+/**
  * Swap the upper and lower byte of an RGB565 buffer.
  * Might be required if a 8bit parallel port or an SPI port send the bytes in the wrong order.
  * The bytes will be swapped in place.
