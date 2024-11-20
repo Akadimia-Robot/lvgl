@@ -67,8 +67,9 @@ static vg_lite_fill_t lv_fill_to_vg(lv_vector_fill_t fill_rule);
 /**********************
  *   GLOBAL FUNCTIONS
  **********************/
+extern lv_draw_vg_lite_unit_t * _vg_lite_unit;
 
-void lv_draw_vg_lite_vector(lv_draw_unit_t * draw_unit, const lv_draw_vector_task_dsc_t * dsc)
+void lv_draw_vg_lite_vector(const lv_draw_vector_task_dsc_t * dsc)
 {
     if(dsc->task_list == NULL)
         return;
@@ -78,7 +79,7 @@ void lv_draw_vg_lite_vector(lv_draw_unit_t * draw_unit, const lv_draw_vector_tas
         return;
 
     LV_PROFILER_DRAW_BEGIN;
-    lv_vector_for_each_destroy_tasks(dsc->task_list, task_draw_cb, draw_unit);
+    lv_vector_for_each_destroy_tasks(dsc->task_list, task_draw_cb, NULL);
     LV_PROFILER_DRAW_END;
 }
 
@@ -99,8 +100,9 @@ static vg_lite_color_t lv_color32_to_vg(lv_color32_t color, lv_opa_t opa)
 
 static void task_draw_cb(void * ctx, const lv_vector_path_t * path, const lv_vector_draw_dsc_t * dsc)
 {
+    LV_UNUSED(ctx);
     LV_PROFILER_DRAW_BEGIN;
-    lv_draw_vg_lite_unit_t * u = ctx;
+    lv_draw_vg_lite_unit_t * u = _vg_lite_unit;
     LV_VG_LITE_ASSERT_DEST_BUFFER(&u->target_buffer);
 
     /* clear area */

@@ -70,7 +70,7 @@ typedef struct _lv_draw_image_dsc_t {
  * @param img_coords        the absolute coordinates of the image
  * @param clipped_img_area  the absolute clip coordinates
  */
-typedef void (*lv_draw_image_core_cb)(lv_draw_unit_t * draw_unit, const lv_draw_image_dsc_t * draw_dsc,
+typedef void (*lv_draw_image_core_cb)(lv_draw_task_t * t, const lv_draw_image_dsc_t * draw_dsc,
                                       const lv_image_decoder_dsc_t * decoder_dsc, lv_draw_image_sup_t * sup,
                                       const lv_area_t * img_coords, const lv_area_t * clipped_img_area);
 

@@ -64,7 +64,7 @@ typedef struct {
 /**
  * Passed as a parameter to `lv_draw_label_iterate_characters` to
  * draw the characters one by one
- * @param draw_unit     pointer to a draw unit
+ * @param t             pointer to a draw task
  * @param dsc           pointer to `lv_draw_glyph_dsc_t` to describe the character to draw
  *                      if NULL don't draw character
  * @param fill_dsc      pointer to a fill descriptor to draw a background for the character or
@@ -73,7 +73,7 @@ typedef struct {
  * @param fill_area     the area to fill
  *                      if NULL do not fill anything
  */
-typedef void(*lv_draw_glyph_cb_t)(lv_draw_unit_t * draw_unit, lv_draw_glyph_dsc_t * dsc, lv_draw_fill_dsc_t * fill_dsc,
+typedef void(*lv_draw_glyph_cb_t)(lv_draw_task_t * t, lv_draw_glyph_dsc_t * dsc, lv_draw_fill_dsc_t * fill_dsc,
                                   const lv_area_t * fill_area);
 
 /**********************
@@ -127,7 +127,7 @@ void /* LV_ATTRIBUTE_FAST_MEM */ lv_draw_character(lv_layer_t * layer, lv_draw_l
  * @param coords        coordinates of the label
  * @param cb            a callback to call to draw each glyphs one by one
  */
-void lv_draw_label_iterate_characters(lv_draw_unit_t * draw_unit, const lv_draw_label_dsc_t * dsc,
+void lv_draw_label_iterate_characters(lv_draw_task_t * t, const lv_draw_label_dsc_t * dsc,
                                       const lv_area_t * coords, lv_draw_glyph_cb_t cb);
 
 /***********************
