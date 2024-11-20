@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file lv_api_map_v9_1.h
  *
  */
@@ -79,9 +79,15 @@ extern "C" {
 
 #define _lv_inv_area lv_inv_area
 
+#define lv_anim_set_playback_delay lv_anim_set_reverse_delay
+#define lv_anim_set_playback_duration lv_anim_set_reverse_duration
+
 /**********************
  * DEPRECATED FUNCTIONS
  **********************/
+
+#define lv_anim_set_time lv_anim_set_duration
+#define lv_anim_set_playback_time lv_anim_set_reverse_duration
 
 #ifdef __cplusplus
 } /*extern "C"*/
