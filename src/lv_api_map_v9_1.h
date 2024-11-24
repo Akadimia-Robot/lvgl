@@ -79,6 +79,12 @@ extern "C" {
 
 #define _lv_inv_area lv_inv_area
 
+#define LV_LABEL_LONG_WRAP             LV_LABEL_LONG_MODE_WRAP
+#define LV_LABEL_LONG_DOT              LV_LABEL_LONG_MODE_DOTS
+#define LV_LABEL_LONG_SCROLL           LV_LABEL_LONG_MODE_SCROLL
+#define LV_LABEL_LONG_SCROLL_CIRCULAR  LV_LABEL_LONG_MODE_SCROLL_CIRCULAR
+#define LV_LABEL_LONG_CLIP             LV_LABEL_LONG_MODE_CLIP
+
 /**********************
  * DEPRECATED FUNCTIONS
  **********************/
@@ -87,4 +93,4 @@ extern "C" {
 } /*extern "C"*/
 #endif
 
-#endif /*LV_API_MAP_V9_0_H*/
+#endif /*LV_API_MAP_V9_1_H*/
