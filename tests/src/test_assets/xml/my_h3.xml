@@ -1,0 +1,12 @@
+<component>
+	<params>
+		<color name="color" default="0"/>
+		<style name="style"/>
+	</params>
+
+	<view extends="lv_label"
+		  style_text_color="$color"
+		  styles="$style"
+		  style_text_font="lv_montserrat_18">
+	</view>
+</component>
