@@ -81,9 +81,15 @@ extern "C" {
 #define lv_chart_set_all_value lv_chart_set_all_values
 #define lv_calendar_set_showed_date lv_calendar_set_month_shown
 
+#define lv_anim_set_playback_delay lv_anim_set_reverse_delay
+#define lv_anim_set_playback_duration lv_anim_set_reverse_duration
+
 /**********************
  * DEPRECATED FUNCTIONS
  **********************/
+
+#define lv_anim_set_time lv_anim_set_duration
+#define lv_anim_set_playback_time lv_anim_set_reverse_duration
 
 #ifdef __cplusplus
 } /*extern "C"*/
