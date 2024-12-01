@@ -72,6 +72,7 @@ enum {
     LV_PROPERTY_ROLLER_START    = 0x0600, /* lv_roller.c */
     LV_PROPERTY_DROPDOWN_START  = 0x0700, /* lv_dropdown.c */
     LV_PROPERTY_SLIDER_START    = 0x0800, /* lv_slider.c */
+    LV_PROPERTY_ANIMIMAGE_START = 0x0900, /* lv_animimage.c */
 
     /*Special ID, use it to extend ID and make sure it's unique and compile time determinant*/
     LV_PROPERTY_ID_BUILTIN_LAST = 0xffff, /*ID of 0x10000 ~ 0xfffffff is reserved for user*/
@@ -90,6 +91,7 @@ typedef struct {
         struct {
             union {
                 int32_t num;                /**< Number integer number (opacity, enums, booleans or "normal" numbers)*/
+                uint32_t num_u;
                 bool enable;                /**< booleans*/
                 const void * ptr;           /**< Constant pointers  (font, cone text, etc)*/
                 lv_color_t color;           /**< Colors*/
@@ -98,6 +100,7 @@ typedef struct {
 
             union {
                 int32_t num2;
+                uint32_t num2_u;
                 bool enable2;
                 const void * ptr2;
                 lv_color_t color2;
